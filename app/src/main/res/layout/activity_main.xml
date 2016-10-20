@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="de.walled.mvvmtest.MainViewModel"/>
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+
+        tools:context="de.walled.mvvmtest.MainActivity">
+
+        <LinearLayout
+            android:id="@+id/click_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="60dp"
+            android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}"
+
+            android:padding="8dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/number_of_clicks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/ClickCounter"
+
+                android:text="@{viewModel.numberOfClicks}"
+                android:textAlignment="center"
+                app:textColor="@{viewModel.counterColor}"
+
+                tools:text="8"
+                tools:textColor="@color/red"
+            />
+
+            <TextView
+                android:id="@+id/static_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                style="@style/ClickCounter"
+
+                android:text="@string/label.clicks"
+                app:textColor="@{viewModel.counterColor}"
+                android:textAlignment="center"
+
+                tools:textColor="@color/red"
+            />
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/click_counter"
+            android:layout_centerHorizontal="true"
+            android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}"
+
+            android:text="@{viewModel.labelText}"
+            android:textAlignment="center"
+            android:textSize="18sp"
+
+            tools:text="You're bad and you should feel bad!"
+        />
+
+        <Button
+            android:id="@+id/clicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/message"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="8dp"
+            android:visibility="@{viewModel.loading ? View.GONE : View.VISIBLE}"
+
+            android:padding="8dp"
+
+            android:text="@string/label.button"
+
+            android:onClick="@{() -> viewModel.onClickIncrement()}"
+        />
+
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:layout_centerHorizontal="true"
+            style="@android:style/Widget.ProgressBar.Inverse"
+            android:visibility="@{viewModel.loading ? View.VISIBLE : View.GONE}"
+
+            android:indeterminate="true"
+        />
+
+    </RelativeLayout>
+
+</layout>

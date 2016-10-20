@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MVVM Test</string>
+
+    <string name="label.button">Click Me</string>
+    <string name="label.clicks">Clicks</string>
+
+    <string name="label.negative">Boooo! You suck. Try doing more clicks...</string>
+    <string name="label.indifferent">"Mhhh not impressed. Definitely seen better..."</string>
+    <string name="label.excited">"Wooohoo!! You totally get it! Let's do more clicks!"</string>
+</resources>
