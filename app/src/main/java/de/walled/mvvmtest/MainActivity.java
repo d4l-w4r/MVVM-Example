@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 		}
     }
 
-    private MainDto initFromBundle(Bundle savedState) {
+    private void initFromBundle(Bundle savedState) {
         MainDto transportObject = (MainDto) savedState.getSerializable(KEY_DTO);
 
         if (transportObject != null) {
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
 			makeInitialNetworkCall();
 		}
 
-        return transportObject;
     }
 
 	private void makeInitialNetworkCall() {
