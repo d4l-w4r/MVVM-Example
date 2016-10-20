@@ -5,6 +5,8 @@ import android.databinding.Bindable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.StringRes;
 
+import com.android.databinding.library.baseAdapters.BR;
+
 import de.walled.mvvmtest.R;
 import de.walled.mvvmtest.api.IClickerApi;
 import de.walled.mvvmtest.model.Excitement;
@@ -37,7 +39,11 @@ public class ClickerViewModel extends BaseObservable {
 		isLoading = true;
 		return api.fetchInitialState()
 				.doOnNext(this::initModel)
-				.doOnTerminate(() -> isLoading = false);
+				.doOnTerminate(() -> {
+					isLoading = false;
+					notifyPropertyChanged(BR.loadingVisible);
+					notifyPropertyChanged(BR.contentVisible);
+				});
 	}
 
 	public void initFromSavedState(ViewState savedState) {
