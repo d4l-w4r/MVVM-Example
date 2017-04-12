@@ -5,7 +5,7 @@ import com.google.common.base.Optional;
 
 import de.walled.mvvmtest.viewmodel.ViewState;
 
-public class ClickerModel implements IClickerModel {
+public class ClickerModel implements Clicker {
 
 	private int numberOfClicks;
 	private Excitement stateOfExcitement;

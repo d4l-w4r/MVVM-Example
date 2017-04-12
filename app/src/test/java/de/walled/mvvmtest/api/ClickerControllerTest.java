@@ -6,17 +6,17 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 
-public class ClickerApiTest {
+public class ClickerControllerTest {
 
-	ClickerApi testApi;
+	private ClickerController testApi;
 
 	@Before
 	public void setup() {
-		testApi = new ClickerApi();
+		testApi = new ClickerController();
 	}
 
 	@Test
-	public void Given_my_fake_api_when_fetchInitialState_is_called_number_of_clicks_is_0() {
+	public void Given_my_fake_api_when_fetchInitialState_is_called_then_number_of_clicks_is_0() {
 		testApi.fetchInitialState()
 				.doOnNext(state -> assertEquals(0, state.getNumberOfClicks()))
 				.toCompletable()

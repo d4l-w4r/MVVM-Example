@@ -5,9 +5,8 @@ import java.util.concurrent.TimeUnit;
 import de.walled.mvvmtest.viewmodel.ViewState;
 import rx.Observable;
 
-public class ClickerApi implements IClickerApi {
+public class ClickerController {
 
-	@Override
 	public Observable<ViewState> fetchInitialState() {
 		return Observable.fromCallable(this::fakeNetworkCall)
 				.delay(3, TimeUnit.SECONDS);

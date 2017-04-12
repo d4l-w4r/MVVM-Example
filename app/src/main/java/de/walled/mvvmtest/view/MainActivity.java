@@ -5,8 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import de.walled.mvvmtest.R;
-import de.walled.mvvmtest.api.ClickerApi;
-import de.walled.mvvmtest.api.IClickerApi;
+import de.walled.mvvmtest.api.ClickerController;
 import de.walled.mvvmtest.databinding.ActivityMainBinding;
 import de.walled.mvvmtest.model.ClickerModel;
 import de.walled.mvvmtest.viewmodel.ClickerViewModel;
@@ -26,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 
 		// would usually be injected but I feel Dagger would be out of scope
-		final IClickerApi api = new ClickerApi();
-		setupViewModel(savedInstanceState, api);
-
+		final ClickerController controller = new ClickerController();
+		
+		setupViewModel(savedInstanceState, controller);
 		ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 		binding.setViewModel(viewModel);
 	}
@@ -50,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
 		outState.putSerializable(KEY_VIEW_STATE, viewModel.getViewState());
 	}
 
-	private void setupViewModel(Bundle savedInstance, IClickerApi api) {
-		viewModel = new ClickerViewModel(new ClickerModel(), api);
+	private void setupViewModel(Bundle savedInstance, ClickerController controller) {
+		viewModel = new ClickerViewModel(new ClickerModel(), controller);
 		final ViewState savedState = getViewStateFromBundle(savedInstance);
 
 		if (savedState == null) {

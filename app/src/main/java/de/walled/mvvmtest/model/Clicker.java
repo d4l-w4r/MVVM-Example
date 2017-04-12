@@ -3,7 +3,7 @@ package de.walled.mvvmtest.model;
 
 import de.walled.mvvmtest.viewmodel.ViewState;
 
-public interface IClickerModel {
+public interface Clicker {
 
 	int getNumberOfClicks();
 

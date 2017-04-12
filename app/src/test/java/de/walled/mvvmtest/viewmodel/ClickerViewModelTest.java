@@ -5,13 +5,9 @@ import android.support.annotation.StringRes;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-
-import java.util.concurrent.TimeUnit;
 
 import de.walled.mvvmtest.R;
-import de.walled.mvvmtest.api.IClickerApi;
+import de.walled.mvvmtest.api.ClickerController;
 import de.walled.mvvmtest.model.ClickerModel;
 import rx.Observable;
 import rx.observers.TestSubscriber;
@@ -28,12 +24,12 @@ import static org.mockito.Mockito.when;
 
 public class ClickerViewModelTest {
 
-	IClickerApi api;
+	private ClickerController api;
 	ClickerViewModel testViewModel;
 
 	@Before
 	public void setup() {
-		api = mock(IClickerApi.class);
+		api = mock(ClickerController.class);
 		testViewModel = new ClickerViewModel(new ClickerModel(), api);
 	}
 

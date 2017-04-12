@@ -8,18 +8,18 @@ import android.support.annotation.StringRes;
 import com.android.databinding.library.baseAdapters.BR;
 
 import de.walled.mvvmtest.R;
-import de.walled.mvvmtest.api.IClickerApi;
+import de.walled.mvvmtest.api.ClickerController;
 import de.walled.mvvmtest.model.Excitement;
-import de.walled.mvvmtest.model.IClickerModel;
+import de.walled.mvvmtest.model.Clicker;
 import rx.Observable;
 
 public class ClickerViewModel extends BaseObservable {
 
-	private final IClickerApi api;
+	private final ClickerController api;
 	boolean isLoading = false;
-	private IClickerModel model;
+	private Clicker model;
 
-	public ClickerViewModel(IClickerModel model, IClickerApi api) {
+	public ClickerViewModel(Clicker model, ClickerController api) {
 		this.model = model;
 		this.api = api;
 	}
